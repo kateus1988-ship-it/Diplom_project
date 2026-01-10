@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ car.title }}</h1>
+
+<dl>
+
+
+    <dt>Title</dt>
+    <dd>{{ car.title }}</dd>
+
+    <dt>Price</dt>
+    <dd>{{ car.price }}</dd>
+
+    <dt>Brand_avto</dt>
+    <dd>{{ car.brand_avto }}</dd>
+
+    <dt>Color</dt>
+    <dd>{{ car.color }}</dd>
+
+    <dt>Color</dt>
+    <dd>{{ car.color }}</dd>
+
+    <dt>Year manufacture</dt>
+    <dd>{{ car.year_manufacture }}</dd>
+
+    <dt>Body type</dt>
+    <dd>{{ car.body_type }}</dd>
+
+    <dt>Engine capacity</dt>
+    <dd>{{ car.engine_capacity }}</dd>
+
+    <dt>Owner</dt>
+    <dd>{{ car.owner.username }}</dd>
+
+    <dt>Type</dt>
+    <dd>{{ car.type }}</dd>
+
+
+
+
+</dl>
+{% if user == car.owner %}
+    <a href="{% url 'cars:car_edit' car.id %}">Edit</a>
+    <a href="{% url 'cars:car_delete' car.id %}">Delete</a>
+{% elif user.is_seeker %}
+    <a href="{% url 'cars:send_deal_request' car.id %}">Send Deal Request</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Statistics</h1>
+
+
+    <p>Total Cars: {{ total_cars }}</p>
+    <p>Available Cars: {{ available_cars }}</p>
+    <p>Sold Cars: {{ sold_cars }}</p>
+
+    <h2>Deal Requests</h2>
+    <p>Total Requests: {{ total_requests }}</p>
+    <p>Approved Requests: {{ approved_requests }}</p>
+    <p>Waiting Requests: {{ waiting_requests }}</p>
+    <p>Rejected Requests: {{ rejected_requests }}</p>
+
+{% endblock %}

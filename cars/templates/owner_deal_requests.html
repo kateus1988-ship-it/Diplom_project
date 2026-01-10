@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Deal requests for my cars</h1>
+
+<ul>
+    {% for req in all_requests %}
+    <li>
+        <strong>{{ req.car.title }}</strong>
+        <p>{{ req.comment }}</p>
+        <em>{{ req.status }}</em>
+
+        {% if req.status == 'waiting' %}
+            <form method="post" action="{% url 'cars:approve_deal_request' req.id %}">
+                {% csrf_token %}
+                <button>Approve</button>
+            </form>
+            <form method="post" action="{% url 'cars:reject_deal_request' req.id %}">
+              {% csrf_token %}
+                <button>Reject</button>
+            </form>
+        {% endif %}
+    </li>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

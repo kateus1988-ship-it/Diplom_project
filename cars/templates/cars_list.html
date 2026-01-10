@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>Cars Catalog</h1>
+
+	<ul>
+		{% for car in all_cars %}
+			<li>
+                {% if car.image %}
+                    <img src="{{ car.image.url }}" alt="{{ car.title }}" width="180" height="140">
+                {% else %}
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='140' viewBox='0 0 180 140'%3E%3Crect fill='%23e9ecef' width='180' height='140'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23adb5bd'%3ENo Image%3C/text%3E%3C/svg%3E" alt="No image" width="180" height="140">
+                {% endif %}
+                <a href="{% url 'cars:car_detail' car.pk %}"> {{ car.title }} </a>
+				<strong> ${{ car.price }} </strong>
+                <small> {{ brand_avto }} </small>
+            </li>
+		{% endfor %}
+	</ul>
+{% endblock %}
