@@ -3,6 +3,12 @@
 {% block content %}
 	<h1>Cars Catalog</h1>
 
+    <div>
+    <h2>Filter by Type</h2>
+    <a href="{% url 'cars:cars_list' %}?type=rent">Rent</a>
+    <a href="{% url 'cars:cars_list' %}?type=sale">Sale</a>
+    </div>
+
 	<ul>
 		{% for car in all_cars %}
 			<li>
@@ -17,4 +23,19 @@
             </li>
 		{% endfor %}
 	</ul>
+
+    <ul>
+    {% for car in cars %}
+        <li>
+            <h3>{{ car.title }}</h3>
+            <p>Type: {{ car.get_type_display }}</p>
+            <p>Description: {{ car.description }}</p>
+            <p>Price: ${{ car.price }}</p>
+            <p>Available: {{ car.available }}</p>
+            <img src="{{ car.image.url }}" alt="{{ car.title }}" style="width:100px; height:auto;">
+        </li>
+    {% empty %}
+        <li>No cars found.</li>
+    {% endfor %}
+    </ul>
 {% endblock %}

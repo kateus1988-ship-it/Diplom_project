@@ -9,8 +9,13 @@ from django.db import transaction
 # Create your views here.
 
 def cars_list(request):
-    all_cars = Car.objects.filter(available=True)
+    type_filter = request.GET.get('type')
+    if type_filter in ['rent', 'sale']:
+        all_cars = Car.objects.filter(available=True, type=type_filter)
+    else:
+        all_cars = Car.objects.all()
     return render(request, 'cars_list.html', context={'all_cars': all_cars})
+
 
 def car_detail(request, car_id):
     car_from_db = get_object_or_404(Car, pk=car_id)
