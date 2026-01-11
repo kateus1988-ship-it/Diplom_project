@@ -4,7 +4,7 @@
 	<h1>Cars Catalog</h1>
 
     <div>
-    <h2>Filter by Type</h2>
+    <a href="{% url 'cars:cars_list' %}">All</a>
     <a href="{% url 'cars:cars_list' %}?type=rent">Rent</a>
     <a href="{% url 'cars:cars_list' %}?type=sale">Sale</a>
     </div>

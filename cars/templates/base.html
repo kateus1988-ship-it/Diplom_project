@@ -1585,6 +1585,13 @@
             <i class="bi bi-building"></i>
             Catalog
         </a>
+        <header>
+            <nav>
+                <a href="{% url 'cars:cars_list' %}">All Cars</a>
+                <a href="{% url 'cars:cars_list' %}?type=rent">Rent Cars</a>
+                <a href="{% url 'cars:cars_list' %}?type=sale">Sale Cars</a>
+            </nav>
+        </header>
 
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
